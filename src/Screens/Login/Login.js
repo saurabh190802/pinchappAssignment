@@ -17,7 +17,7 @@ const Login = ({ navigation }) => {
         isSecure: true
     })
     const { isLoading, email, password, isSecure } = state
-    const updateState = (data) => setState(() => ({ ...state, ...data }))
+    const updateState = (data) => setState(() => ({ ...state, ...data }),()=> console.log(state))
 
 
     const isValidData = () => {
