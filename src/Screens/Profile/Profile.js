@@ -29,10 +29,11 @@ const Profile = () => {
     }
     return (
         <View style={styles.container}>
-            <Text>{userData?.user?.fName}</Text>
-            <Text>{userData?.user?.lName}</Text>
-            <Text>{userData?.user?.email}</Text>
-            <Text style={{ marginBottom: 16 }}>{}</Text>
+            <Text>First name : {userData?.user?.fName}</Text>
+            <Text>Last name : {userData?.user?.lName}</Text>
+            <Text>Username : {userData?.user?.userName}</Text>
+            <Text>phoneNum : {userData?.user?.phoneNum}</Text>
+            <Text style={{ marginBottom: 16 }}>{userData?.user?.email}</Text>
             <ButtonWithLoader
                 isLoading={isLoading}
                 text="Logout"
