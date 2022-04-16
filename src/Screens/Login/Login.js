@@ -52,7 +52,7 @@ const Login = ({ navigation }) => {
                 updateState({ isLoading: false })
             }
 
-            // navigation.navigate('Signup')
+           
         }
     }
     return (

@@ -1,8 +1,8 @@
-//import liraries
+
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-// create a component
+
 const ButtonWithLoader = ({
     isLoading,
     text,
@@ -18,7 +18,7 @@ const ButtonWithLoader = ({
     );
 };
 
-// define your styles
+
 const styles = StyleSheet.create({
     btnStyle: {
         height: 48,
@@ -36,5 +36,5 @@ const styles = StyleSheet.create({
     }
 });
 
-//make this component available to the app
+
 export default ButtonWithLoader;

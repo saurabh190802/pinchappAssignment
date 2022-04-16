@@ -6,9 +6,7 @@ import actions from '../../redux/actions';
 
 const Profile = () => {
     const userData = useSelector((state) => state.auth.userData)
-    //const userName = userData?.user.userName
-    //const email = userData?.user.email
-    // console.log("user data in profile screen", userData)
+  
     const [isLoading, setLoading] = useState(false)
 
     const onLogoutAlert = () => {
