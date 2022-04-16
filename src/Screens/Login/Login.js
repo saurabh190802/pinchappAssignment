@@ -17,7 +17,7 @@ const Login = ({ navigation }) => {
         isSecure: true
     })
     const { isLoading, email, password, isSecure } = state
-    const updateState = (data) => setState(() => ({ ...state, ...data }),()=> console.log(state))
+     const updateState = (data) => setState(() => ({ ...state, ...data }))
 
 
     const isValidData = () => {
@@ -42,7 +42,7 @@ const Login = ({ navigation }) => {
                     password
                 })
                 console.log("res==>>>>>", res)
-                if(!res.data.emailVerified){
+                if(!res.data.isFirstLoggedIn){
                     alert("Please verify your email")
                 }
                 updateState({ isLoading: false })
