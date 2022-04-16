@@ -42,7 +42,7 @@ const Login = ({ navigation }) => {
                     password
                 })
                 console.log("res==>>>>>", res)
-                if(!res.data.isFirstLoggedIn){
+                if(res.isFirstLoggedIn){
                     alert("Please verify your email")
                 }
                 updateState({ isLoading: false })

@@ -17,10 +17,10 @@ export const saveUserData = (data) => {
 export function login(data) {
     return new Promise((resolve, reject) => {
         return apiPost(LOGIN, data).then((res) => {
-            if (res.data.isFirstLoggedIn) {
-                setUserData(res.data).then(() => {
+            if (!res.isFirstLoggedIn) {
+                setUserData(res).then(() => {
                     resolve(res)
-                    saveUserData(res.data)
+                    saveUserData(res)
                 });
                 return
             }
