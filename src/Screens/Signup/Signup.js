@@ -18,10 +18,11 @@ const Signup = ({ navigation }) => {
         lName:'',
         userName: '',
         email: '',
+        phoneNum:'',
         password: '',
         isSecure: true
     })
-    const { isLoading, userName,fName,lName, email, password, isSecure } = state
+    const { isLoading, userName,fName,lName, email,phoneNum, password, isSecure } = state
     const updateState = (data) => setState(() => ({ ...state, ...data }))
 
 
@@ -31,6 +32,7 @@ const Signup = ({ navigation }) => {
             fName,
             lName,
             email,
+            phoneNum,
             password
         })
         if (error) {
@@ -50,10 +52,11 @@ const Signup = ({ navigation }) => {
                     fName,
                     lName,
                     email,
+                    phoneNum,
                     password
                 })
                 console.log("res of signup==>>>>>", res)
-                showMessage("Registered successfully...!!!!")
+                showMessage("Registered successfully...!!!! Please Login")
                 updateState({ isLoading: false })
                 navigation.goBack()
             } catch (error) {
@@ -86,6 +89,11 @@ const Signup = ({ navigation }) => {
                 label="Email"
                 placheHolder="enter your email"
                 onChangeText={(email) => updateState({ email })}
+            />
+            <TextInputWithLable
+                label="Phone Number"
+                placheHolder="enter your phone number"
+                onChangeText={(phoneNum) => updateState({ phoneNum })}
             />
             <TextInputWithLable
                 label="Password"
