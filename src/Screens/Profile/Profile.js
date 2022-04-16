@@ -6,6 +6,8 @@ import actions from '../../redux/actions';
 
 const Profile = () => {
     const userData = useSelector((state) => state.auth.userData)
+    //const userName = userData?.user.userName
+    //const email = userData?.user.email
     // console.log("user data in profile screen", userData)
     const [isLoading, setLoading] = useState(false)
 
@@ -27,8 +29,10 @@ const Profile = () => {
     }
     return (
         <View style={styles.container}>
-            <Text>{userData.user.userName}</Text>
-            <Text style={{ marginBottom: 16 }}>{userData.user.email}</Text>
+            <Text>{userData?.user?.fName}</Text>
+            <Text>{userData?.user?.lName}</Text>
+            <Text>{userData?.user?.email}</Text>
+            <Text style={{ marginBottom: 16 }}>{}</Text>
             <ButtonWithLoader
                 isLoading={isLoading}
                 text="Logout"

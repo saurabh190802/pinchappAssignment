@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet,KeyboardAvoidingView, SafeAreaView,ScrollView } from 'react-native';
 import ButtonWithLoader from '../../Components/ButtonWithLoader';
 import TextInputWithLable from '../../Components/TextInputWithLabel';
 
@@ -9,22 +9,27 @@ import actions from '../../redux/actions';
 import { showMessage } from 'react-native-flash-message';
 
 
+
 const Signup = ({ navigation }) => {
 
     const [state, setState] = useState({
         isLoading: false,
+        fName:'',
+        lName:'',
         userName: '',
         email: '',
         password: '',
         isSecure: true
     })
-    const { isLoading, userName, email, password, isSecure } = state
+    const { isLoading, userName,fName,lName, email, password, isSecure } = state
     const updateState = (data) => setState(() => ({ ...state, ...data }))
 
 
     const isValidData = () => {
         const error = validator({
             userName,
+            fName,
+            lName,
             email,
             password
         })
@@ -41,12 +46,14 @@ const Signup = ({ navigation }) => {
             updateState({ isLoading: true })
             try {
                 const res = await actions.signup({
-                    name: userName,
+                    userName,
+                    fName,
+                    lName,
                     email,
                     password
                 })
                 console.log("res of signup==>>>>>", res)
-                showMessage("Registered successfully...!!!! Please verify your email")
+                showMessage("Registered successfully...!!!!")
                 updateState({ isLoading: false })
                 navigation.goBack()
             } catch (error) {
@@ -58,10 +65,22 @@ const Signup = ({ navigation }) => {
     }
     return (
         <View style={styles.container}>
+            <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} behavior="padding" enabled   keyboardVerticalOffset={100}>
+            <ScrollView>
             <TextInputWithLable
                 label="User name"
                 placheHolder="enter your user name"
                 onChangeText={(userName) => updateState({ userName })}
+            />
+             <TextInputWithLable
+                label="First name"
+                placheHolder="enter your first name"
+                onChangeText={(fName) => updateState({ fName })}
+            />
+             <TextInputWithLable
+                label="Last name"
+                placheHolder="enter your last name"
+                onChangeText={(lName) => updateState({ lName })}
             />
             <TextInputWithLable
                 label="Email"
@@ -81,6 +100,8 @@ const Signup = ({ navigation }) => {
                 onPress={onSignup}
                 isLoading={isLoading}
             />
+            </ScrollView>
+            </KeyboardAvoidingView>
         </View>
     );
 };
